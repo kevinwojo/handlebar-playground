@@ -1,0 +1,38 @@
+<html>
+	<head>
+		<title>Handlebar Test</title>
+		<script src="js/handlebars-v4.0.5.js"></script>
+		<script src="js/jquery-2.2.3.min.js"></script>
+		<script src="js/logic.js"></script>
+	</head>
+
+	<body>
+
+		<div id="entries">
+			<script id="entry-template" type="text/x-handlebars-template">
+				{{#each results}}
+			  	<div class="entry">
+			  	  <h1>
+							<a href="{{{link url}}}">
+								{{title}}
+							</a>
+						</h1>
+						<div class="author">
+							{{author}}
+						</div>
+			  	  <div class="body">
+			  	    {{description}}
+			  	  </div>
+						<div class="fulltext">
+							<p>{{fulltext}}</p>
+						</div>
+						<div class="link">
+							{{{link url}}}
+						</div>
+			  	</div>
+			{{/each}}
+			</script>
+		</div>
+	</body>
+</html>
+
