@@ -13,9 +13,7 @@
 				{{#each results}}
 			  	<div class="entry">
 			  	  <h1>
-							<a href="{{{link url}}}">
-								{{title}}
-							</a>
+								{{link url title}}
 						</h1>
 						<div class="author">
 							{{author}}
@@ -27,7 +25,7 @@
 							<p>{{fulltext}}</p>
 						</div>
 						<div class="link">
-							{{{link url}}}
+							{{{link url url}}}
 						</div>
 			  	</div>
 			{{/each}}
