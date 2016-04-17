@@ -40,6 +40,7 @@ var SearchPage = {
 	//
 	sendQuery: function() {
 		// Make a promise, get results.
+
 		// Some bite-sized results
 		this.results = [
 			{"title":['Canine Courageous'], "alias": "", "fulltext":"", "description":"2011 Guideposts article", "url":"https:\/\/127.0.0.1\/resources\/40339", "tags":['test','canine', 'dog', 'behavior']},
@@ -57,6 +58,7 @@ var SearchPage = {
 		// Types
 		 // interval - creates two inputs to perform a "Between" search
 		 // exact - only create one input for performing an 'Equal to' search
+
 		var filters = [
 			{'name':'By Type', 'field': 'hubtype', 'values':['resource','citation','publication','member']},
 			{'name':'Month', 'field': 'month', 'type':'date', 'values':moment.months('MMMM')},
@@ -69,7 +71,7 @@ var SearchPage = {
 			var values = filter.values;
 			var queryURL = 'https://kevdev.com?terms=canine';
 
-			var html = '<ul>';
+			var html = '<ul class="filter-'+ filter.field+ '">';
 			for (i=0; i < values.length; i++) {
 				html += '<li>' + '<a href="'+queryURL+'&filterby='+filter.field+'&filter='+values[i]+'">'+values[i]+'</a></li>';
 			}
