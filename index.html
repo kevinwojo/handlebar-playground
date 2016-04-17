@@ -3,34 +3,83 @@
 		<title>Handlebar Test</title>
 		<script src="js/handlebars-v4.0.5.js"></script>
 		<script src="js/jquery-2.2.3.min.js"></script>
+		<script src="js/moment-with-locales.js"></script>
 		<script src="js/logic.js"></script>
 	</head>
 
 	<body>
 
-		<div id="entries">
-			<script id="entry-template" type="text/x-handlebars-template">
+	<form class="hubsearch" method="post" action="index.html">
+		<div class="searchbar">
+			<input type="text" name="terms" value="canine"/>
+			<button name="search">Search</button>
+		</div>
+
+		<div id="results">
+			<script id="result-template" type="text/x-handlebars-template">
 				{{#each results}}
-			  	<div class="entry">
+			  	<div class="result">
 			  	  <h1>
 								{{link url title}}
 						</h1>
+
+						{{#if author}}
 						<div class="author">
 							{{author}}
 						</div>
+						{{/if}}
+
+						{{#if description}}
 			  	  <div class="body">
 			  	    {{description}}
 			  	  </div>
+						{{/if}}
+
+						{{#if fulltext}}
 						<div class="fulltext">
 							<p>{{fulltext}}</p>
 						</div>
+						{{/if}}
+
 						<div class="link">
 							{{{link url url}}}
 						</div>
-			  	</div>
+
+						{{#if tags}}
+						<div class="tags">
+							<ul>
+								{{#each tags}}
+								<li class="tag">{{this}}</li>
+								{{/each}}
+							</ul>
+			  		</div>
+					{{/if}}
+
+				</div>
 			{{/each}}
 			</script>
 		</div>
+
+		<div class="left-sidebar">
+			<div class="categories">
+				<script id="filter-template" type="text/x-handlebars-template">
+					{{#each filters}}
+				  	<div class="filter">
+				  	  <h3>
+								{{name}}
+							</h3>
+							
+							
+							{{#if values}}
+								<!-- Generated list of links in Handlebars -->
+								{{apply-filter this}}
+							{{/if}}
+						</div>
+					{{/each}}
+				</script>
+			</div>
+		</div>
+		</form>
 	</body>
 </html>
 
